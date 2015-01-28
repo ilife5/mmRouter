@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <meta http-equiv="X-UA-Compatible" content="IE=6" />
+        <title>mmState的相关测试</title>
+        <style>
+            .header{
+                background-color: #ccc;
+                height:40px;
+            }
+            .header a{
+                width:140px;
+                display: inline-block;
+                text-decoration: none;
+                text-align: center;
+                font-weight: bolder;
+                font-size: 16px;
+                height:40px;
+                line-height: 40px;
+                position: relative;
+            }
+            .header .hint{
+                position: absolute;
+                top: 8px;
+                right: 40px;
+            }
+        </style>
+        <script src="avalon.js"></script>
+        <script >
+            avalon.config({debug: true})
+            require(["ready!", "mmState", "about/about", "contacts/contacts", "home/home"], function() {
+
+                //一个顶层VM
+                avalon.define({
+                    $id: "test"
+                })
+
+                //启动路由
+                avalon.history.start({
+                    basepath: "/mmRouter"
+                })
+                //go!!!!!!!!!
+                avalon.scan()
+            })
+
+        </script>
+
+
+    </head>
+
+    <body>
+        <h1>mmState例子</h1>
+        <div ms-controller="test">
+
+            <div class="header">
+                <a href="#!/">mmState</a>  <a href="#!/contacts">contacts</a>  <a href="#!/about">about</a>
+                <p class="hint" ms-view="hint"></p>
+            </div>
+
+            <div ms-view></div>
+        </div>
+
+    </body>
+</html>
